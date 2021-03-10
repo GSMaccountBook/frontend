@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'THE유럽여행';
+  src: url(./fonts/THE유럽여행.ttf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'THE유럽여행';
+  src: url(./fonts/THE유럽여행.ttf) format('truetype');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
