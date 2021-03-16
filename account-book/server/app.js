@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 const port = 3002;
 //cors필요하면 넣기
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -13,7 +13,9 @@ var connection = mysql.createConnection({
     database:"accountbook"
 });
 
-app.use(bodyParser.urlencoded({extended: false}));
+connection.connet();
+
+//app.use(bodyParser.urlencoded({extended: false}));
 
 var indexRouter = require('./routes/index');
 //var userRouter = require('./routes/user');
