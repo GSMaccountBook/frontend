@@ -15,10 +15,10 @@ connection.connect();
 
 router.get('/', function (req, res, next) {
   console.log('get success');
-  connection.query("INSERT INTO test VALUES ('idval,test1val,test2val')",
+  connection.query("INSERT INTO test(id, test1, test2) VALUES ('idval','test1val','test2val')",
 	function(error, result, fields) {
 		if(error) {
-			console.log('insert fail');
+			console.log(error);
 		} else {
 			console.log('insert success');
 		}
