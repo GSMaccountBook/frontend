@@ -32,11 +32,11 @@ router.get('/', function (req, res, next) {
 
 router.post('/mail', async(req, res) => {
   let authNum = Math.random().toString().substr(2,6);
-  let emailTemplete;
+  let emailTemplete;/*
   ejs.renderFile(appDir+'/template/authMail.ejs', {authCode : authNum}, function (err, data) {
     if(err){console.log(err)}
     emailTemplete = data;
-  });
+  });*/
 
   let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -51,9 +51,11 @@ router.post('/mail', async(req, res) => {
 
   let mailOptions = await transporter.sendMail({
       from: `가계부 프로젝트`, //프로젝트 이름
-      to: req.body.mail,
+      to: 'inkyo0112@naver.com',
       subject: '회원가입을 위한 인증번호를 입력해주세요.',
-      html: emailTemplete,
+      html: `    <p style='color:black'>회원 가입을 위한 인증번호 입니다.</p>
+      <p style='color:black'>아래의 인증 번호를 입력하여 인증을 완료해주세요.</p>
+      <h2>${authNum}</h2>`,
   });
 
 
