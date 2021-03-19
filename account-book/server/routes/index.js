@@ -4,14 +4,10 @@ var router = express.Router();
 //email인증할 때 사용
 const nodemailer = require('nodemailer');
 
+require('dotenv').config();
 
 //DB연동용
 const mysql = require("mysql");
-
-const dotenv = require('dotenv');
- 
-dotenv.config();
-console.log(process.env.HELLO);
 
 var connection = mysql.createConnection({
     host:"127.0.0.1",
@@ -48,6 +44,8 @@ router.post('/mail', async(req, res) => {
   const smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS
     },
     tls: {
         rejectUnauthorized: false
@@ -55,6 +53,8 @@ router.post('/mail', async(req, res) => {
   });
 
   const mailOptions = {
+    from:process.env.NODEMAILER_USER,
+    to:"inkyo0112@naver.com",
     subject:"hi",
     text:`인증번호는 ${authNum} 입니다`
   };

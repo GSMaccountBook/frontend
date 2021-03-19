@@ -4,11 +4,9 @@ const port = 3002;
 //cors필요하면 넣기
 //const bodyParser = require("body-parser");
 
-let dotenv = require('dotenv')
+//require('dotenv').config()
 
-dotenv.config({
-    path: './accountbook/.env'
-  });
+//console.log(process.env.NODEMAILER_USER);
 
 //app.use(bodyParser.urlencoded({extended: false}));
 
