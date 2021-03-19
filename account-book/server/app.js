@@ -4,6 +4,11 @@ const port = 3002;
 //cors필요하면 넣기
 //const bodyParser = require("body-parser");
 
+let dotenv = require('dotenv')
+
+dotenv.config({
+    path: './accountbook/.env'
+  });
 
 //app.use(bodyParser.urlencoded({extended: false}));
 
