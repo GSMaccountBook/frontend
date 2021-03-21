@@ -33,7 +33,7 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-console.log(process.env.NODEMAILER_USER);
+//console.log(process.env.NODEMAILER_USER);
 
 router.post('/mail', async(req, res) => {
   //이메일 인증
@@ -54,8 +54,8 @@ router.post('/mail', async(req, res) => {
 
   const mailOptions = {
     from:process.env.NODEMAILER_USER,
-    to:"inkyo0112@naver.com",
-    subject:"hi",
+    to:req.body.Email,
+    subject:"가계부 E-Mail인증번호",
     text:`인증번호는 ${authNum} 입니다`
   };
 
