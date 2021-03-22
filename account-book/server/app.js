@@ -11,9 +11,11 @@ const port = 3002;
 //app.use(bodyParser.urlencoded({extended: false}));
 
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 //var userRouter = require('./routes/user');
 
 app.use(indexRouter);
+app.use(loginRouter);
 
 // portnumber를 3002로 지정
 
