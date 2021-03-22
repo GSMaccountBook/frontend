@@ -2,12 +2,26 @@ import React, {useState, useEffect} from 'react';
 import * as S from './style';
 import { FirstContainer, SecondContainer, Footer } from './../../containers';
 import Calc from './calculator.png';
+import axios from 'axios';
+
 
 function Main() {
     const [scroll, handleScroll] = useState(0);
     const [isShow, setIsShow] = useState(false);
+    const [id, setId] = useState('');
 
+    async function getId() {
+        try {
+            const response = await axios.get('/');
+            console.log(response);
+        }
+        catch(error) {
+            console.log('error', error);
+        }
+    }
+    
     useEffect(() => {
+        getId();
         window.addEventListener("scroll", onScroll)
         window.addEventListener("scroll", isScroll)
 
@@ -16,6 +30,8 @@ function Main() {
             window.removeEventListener("scroll", isScroll);
         }
     }, [isShow]);
+
+    
 
     const onScroll = () => {
         handleScroll(document.documentElement.scrollTop);
