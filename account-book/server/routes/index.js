@@ -21,6 +21,7 @@ connection.connect();
 
 router.get('/', function (req, res, next) {
   console.log('get success');
+  /*
   connection.query("INSERT INTO test(id, test1, test2) VALUES ('idval','test1val','test2val')",
 	function(error, result, fields) {
 		if(error) {
@@ -29,6 +30,9 @@ router.get('/', function (req, res, next) {
 			console.log('insert success');
 		}
 	});
+  */
+  let hello = 'hi';
+  res.send(hello);
 });
 
 //console.log(process.env.NODEMAILER_USER);

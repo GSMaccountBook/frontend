@@ -13,7 +13,8 @@ function Main() {
     async function getId() {
         try {
             const response = await axios.get('/');
-            console.log(response);
+            console.log('this is data');
+            console.log(response.data.hello);
         }
         catch(error) {
             console.log('error', error);
