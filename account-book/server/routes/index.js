@@ -68,7 +68,7 @@ router.post('/mail', async(req, res) => {
     } else {
       console.log('send success');
     }
-    smtpTransport.close();
+    smtpTransport.close(); 
   })
 });
 
