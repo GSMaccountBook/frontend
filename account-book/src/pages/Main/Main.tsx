@@ -22,6 +22,7 @@ function Main() {
     }
     
     useEffect(() => {
+        console.log("useEffect");
         getId();
         window.addEventListener("scroll", onScroll)
         window.addEventListener("scroll", isScroll)
