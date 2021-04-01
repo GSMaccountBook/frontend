@@ -6,6 +6,10 @@ const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
+const bodyParser = require("body-parser");
+
+
+
 //DB연동용
 const mysql = require("mysql");
 
