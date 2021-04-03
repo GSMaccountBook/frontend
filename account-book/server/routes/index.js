@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var cors = require('cors');
 
 //email인증할 때 사용
 const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 
 
@@ -36,7 +37,7 @@ router.get('/', function (req, res, next) {
 	});
   */
   let hello = 'hi';
-  res.send(hello);
+  res.json({hello:hello});
 });
 
 //console.log(process.env.NODEMAILER_USER);

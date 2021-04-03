@@ -3,7 +3,8 @@ var app = express();
 const port = 3002;
 
 const cors = require('cors');
-app.use(cors())
+app.use(cors());
+
 //cors필요하면 넣기
 //const bodyParser = require("body-parser");
 
