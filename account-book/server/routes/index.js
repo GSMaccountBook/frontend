@@ -43,7 +43,7 @@ router.get('/', function (req, res, next) {
 //console.log(process.env.NODEMAILER_USER);
 
 router.post('/mail', async(req, res) => {
-  //이메일 인증
+  //이메일 인증 부분, 회원가입에 넣을 예정
 
   let authNum = Math.random().toString().substr(2,6);
 
