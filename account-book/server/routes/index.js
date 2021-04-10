@@ -27,7 +27,9 @@ connection.connect();
 router.get('/', function (req, res, next) {
   console.log('get success');
   /*
-  connection.query("INSERT INTO test(id, test1, test2) VALUES ('idval','test1val','test2val')",
+  let username = req.body.username;
+  let passwd = req.body.passwd;
+  connection.query("INSERT INTO test(id, test1, test2) VALUES ('idval','"+username+"','"+passwd+"')",
 	function(error, result, fields) {
 		if(error) {
 			console.log(error);
