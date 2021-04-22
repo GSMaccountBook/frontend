@@ -25,4 +25,5 @@ app.use(loginRouter);
 
 
 // 3002번 포트넘버를 가진 서버 생성
-app.listen(port, () => console.log(`listening on port ${port}!`));
+const hostname = "10.120.75.224"
+app.listen(port,hostname, () => console.log(`listening on port ${port}!`));
