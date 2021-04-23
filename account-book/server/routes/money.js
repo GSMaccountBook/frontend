@@ -1,3 +1,4 @@
+const e = require('cors');
 var express = require('express');
 var router = express.Router();
 
@@ -19,6 +20,17 @@ connection.connect();
 
 router.get('/', function (req, res, next) {
   console.log('get success');
+  connection.query(`SELECT * FROM user_money WHERE user_id = SELECT user_id FROM user WHERE id IN(
+  SELECT userid
+  FROM user_data
+  WHERE id = ${username})`),
+  function(error, result, fields) {
+    if(error) {
+      console.log('data select error');
+    } else {
+
+    }
+  }
 });
 
 router.post('/', function (req, res, next) {

@@ -42,6 +42,8 @@ router.get('/', function (req, res, next) {
   res.json({hello:hello});
 });
 
+
+
 //console.log(process.env.NODEMAILER_USER);
 
 router.post('/mail', async(req, res) => {
