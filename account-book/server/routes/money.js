@@ -20,10 +20,14 @@ connection.connect();
 
 router.get('/', function (req, res, next) {
   console.log('get success');
-  connection.query(`SELECT * FROM user_money WHERE user_id = SELECT user_id FROM user WHERE id IN(
-  SELECT userid
-  FROM user_data
-  WHERE id = ${username})`),
+  //id로 userid(기본키)가져오는 쿼리문
+  connection.query(`SELECT userid FROM accountbook.user_money WHERE userid =(
+    SELECT userid 
+      FROM accountbook.user_data 
+      WHERE userid IN(
+      SELECT userid
+      FROM accountbook.user_data
+          WHERE id = ${username}))`),
   function(error, result, fields) {
     if(error) {
       console.log('data select error');
