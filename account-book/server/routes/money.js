@@ -31,6 +31,14 @@ router.get('/', function (req, res, next) {
 
     }
   }
+  connection.query(`SELECT money FROM user_money WHERE user_id = `),
+  function(error, result, fields) {
+    if(error) {
+      console.log('data select error about money');
+    } else {
+      
+    }
+  }
 });
 
 router.post('/', function (req, res, next) {
