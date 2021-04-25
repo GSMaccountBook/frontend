@@ -25,9 +25,9 @@ router.get('/', function (req, res, next) {
     SELECT userid 
       FROM accountbook.user_data 
       WHERE userid IN(
-      SELECT userid
-      FROM accountbook.user_data
-          WHERE id = ${username}))`),
+        SELECT userid
+        FROM accountbook.user_data
+        WHERE id = ${username}))`),
   function(error, result, fields) {
     if(error) {
       console.log('data select error');

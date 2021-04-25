@@ -5,6 +5,7 @@ require('dotenv').config();
 
 //DB연동용
 const mysql = require("mysql");
+const { route } = require('./money');
 
 var connection = mysql.createConnection({
     host:process.env.DB_HOST,
@@ -18,13 +19,10 @@ connection.connect();
 
 
 router.get('/', function (req, res, next) {
-  console.log('get success');
+ 	console.log('get success');
 });
 
 router.post('/', function (req, res, next) {
-  var name = req.body.name;
-	var username = req.body.username;
-	var password = req.body.password;
 	connection.query("INSERT INTO users VALUES ('"+username +"', '"+name+"', '"+password+"')",
 	function(error, result, fields) {
 		if(error) {
@@ -44,5 +42,45 @@ router.post('/', function (req, res, next) {
 	})
 
   });
+
+  router.post('/mail', function(req,res,next) {
+	console.log('mail get success');
+	let name = req.body.name;
+	let username = req.body.username;
+	let password = req.body.password;
+	let email = req.body.email;
+
+
+	let authNum = Math.random().toString().substr(2,6);
+	res.json({authNum:authNum});
+  	const smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+  });
+
+  const mailOptions = {
+    from:process.env.NODEMAILER_USER,
+    to:req.body.email,
+    subject:"가계부 E-Mail인증번호",
+    text:`인증번호는 ${authNum} 입니다`
+  };
+
+  await smtpTransport.sendMail(mailOptions, (error, response)=> {
+    if(error) {
+      console.log('send error');
+      console.log(error);
+    } else {
+      console.log('send success');
+    }
+    smtpTransport.close(); 
+  });
+
+});
 
 module.exports = router;
